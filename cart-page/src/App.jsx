@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
+import { Col, Row } from 'react-bootstrap';
 
 
 const App = () => {
@@ -16,9 +17,20 @@ const App = () => {
   return (
     <>
       <h2>This is Cart Page</h2>
+
       {product.map((data) => (
-        <p key={data.id}> <h3 style={{color:"whitesmoke"}}>{data.name}</h3>
-        </p>
+        <Row key={data.id}>
+          <Col xs={6} sm={6} md={4} lg={3}>
+            <img
+              src={data.image === null || data.image === ""
+                ? "NaN"
+                : data.image}
+              style={{ width: "250px" }}
+            />
+            <h3 style={{ color: " whitesmoke" }}>{data.name}</h3>
+            <h5>price:{data.price}</h5>
+          </Col>
+        </Row>
       ))}
 
 
